@@ -20,8 +20,8 @@ body {
 }
 
 .game-info {
-  font-size: 1.2rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
 }
 
 .turn-badge {
@@ -37,8 +37,7 @@ body {
 }
 
 .scoreboard {
-  font-size: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .tic-tac-toe {
@@ -103,6 +102,10 @@ body {
   display: inline-block;
 }
 
+.timer {
+  font-size: 0.9rem;
+}
+
 body.dark {
   background: linear-gradient(135deg, #000000, #434343);
 }
@@ -112,19 +115,15 @@ body.dark .box {
   border: 2px solid #bbb;
 }
 
-body.dark .game-info, body.dark .btn, body.dark .theme-toggle {
-  background: rgba(255, 255, 255, 0.1);
-  color: #ddd;
+.history {
+  margin-top: 20px;
+  font-size: 0.9rem;
 }
 
-body.dark .box.win {
-  background: linear-gradient(45deg, #ff5f6d, #ffc371);
-  animation: glow-dark 1s infinite alternate;
-}
-
-@keyframes glow-dark {
-  from { box-shadow: 0 0 10px #ff5f6d; }
-  to { box-shadow: 0 0 20px #ffc371; }
+#history-log {
+  list-style: none;
+  max-height: 100px;
+  overflow-y: auto;
 }
 
 @media (max-width: 500px) {
