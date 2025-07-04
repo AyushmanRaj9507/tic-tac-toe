@@ -1,0 +1,12 @@
+{
+  "name": "tic-tac-toe",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx serve"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

@@ -1,0 +1,167 @@
+*,*::before,*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', 'sans-serif';
+}
+
+.wrapper{
+    width: 100vw;
+    height: 100vh;
+    background-image: url(./assets/gradient-bg.jpg);
+    background-size: cover;
+    background-position: center;
+    display: grid;
+    place-items: center;
+}
+
+.game-info{
+    color:white;
+    position:absolute;
+    top:3rem;
+    left:50%;
+    transform:translateX(-50%);
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    padding: 0.5rem 3rem;
+    /* text-align:center; */
+
+}
+
+.tic-tac-toe{
+    width:90%;
+    max-width:20rem;
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    aspect-ratio: 1/1;
+}
+
+
+.box{
+    position:relative;
+    width:100%;
+    aspect-ratio: 1/1;
+    cursor: pointer;
+    font-size: 3rem;
+    color:white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box1, .box2, .box4, .box5{
+    border-right:2px solid white;
+    border-bottom:2px solid white;
+}
+
+.box3, .box6{
+    border-bottom: 2px solid white;
+}
+
+.box7, .box8{
+    border-right:2px solid white;
+}
+
+.btn{
+    color:white;
+    position: absolute;
+    bottom:3rem;
+    left:50%;
+    transform:translateX(-50%);
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    padding: 0.5rem 2rem;
+    cursor:pointer;
+    display: none;
+}
+
+.btn.active{
+    display: flex;
+}
+
+.win{
+    background-color: rgba(0, 255, 0, 0.3);
+}
+
+:root {
+  --bg: #ffffff;
+  --text: #000000;
+  --box-bg: #eee;
+  --win-bg: #4caf50;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  text-align: center;
+  margin: 0;
+  padding: 20px;
+  transition: all 0.3s ease;
+}
+
+.wrapper {
+  max-width: 400px;
+  margin: auto;
+}
+
+.tic-tac-toe {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  gap: 10px;
+  justify-content: center;
+  margin: 20px auto;
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  background: var(--box-bg);
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.box.win {
+  background: var(--win-bg);
+  animation: pulse 1s infinite alternate;
+}
+
+@keyframes pulse {
+  from { transform: scale(1); }
+  to { transform: scale(1.1); }
+}
+
+button {
+  margin: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.dark {
+  --bg: #121212;
+  --text: #ffffff;
+  --box-bg: #333;
+  --win-bg: #81c784;
+}
+
+@media (max-width: 500px) {
+  .tic-tac-toe {
+    grid-template-columns: repeat(3, 70px);
+    gap: 5px;
+  }
+
+  .box {
+    width: 70px;
+    height: 70px;
+    font-size: 1.5rem;
+  }
+}
