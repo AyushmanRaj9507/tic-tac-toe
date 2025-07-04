@@ -1,4 +1,3 @@
-/* Reset & base */
 * {
   margin: 0;
   padding: 0;
@@ -22,10 +21,24 @@ body {
 
 .game-info {
   font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.turn-badge {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background: #00c6ff;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 0.9rem;
+  line-height: 24px;
+  margin-right: 5px;
+}
+
+.scoreboard {
+  font-size: 1rem;
   margin-bottom: 1rem;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
 }
 
 .tic-tac-toe {
@@ -61,16 +74,12 @@ body {
 }
 
 @keyframes glow {
-  from {
-    box-shadow: 0 0 10px #00c6ff;
-  }
-  to {
-    box-shadow: 0 0 20px #0072ff;
-  }
+  from { box-shadow: 0 0 10px #00c6ff; }
+  to { box-shadow: 0 0 20px #0072ff; }
 }
 
 .btn, .theme-toggle {
-  margin-top: 15px;
+  margin: 10px 5px;
   background: rgba(255, 255, 255, 0.1);
   color: #fff;
   padding: 0.5rem 1rem;
@@ -94,7 +103,6 @@ body {
   display: inline-block;
 }
 
-/* Dark mode */
 body.dark {
   background: linear-gradient(135deg, #000000, #434343);
 }
@@ -104,9 +112,7 @@ body.dark .box {
   border: 2px solid #bbb;
 }
 
-body.dark .game-info, 
-body.dark .btn, 
-body.dark .theme-toggle {
+body.dark .game-info, body.dark .btn, body.dark .theme-toggle {
   background: rgba(255, 255, 255, 0.1);
   color: #ddd;
 }
@@ -117,12 +123,8 @@ body.dark .box.win {
 }
 
 @keyframes glow-dark {
-  from {
-    box-shadow: 0 0 10px #ff5f6d;
-  }
-  to {
-    box-shadow: 0 0 20px #ffc371;
-  }
+  from { box-shadow: 0 0 10px #ff5f6d; }
+  to { box-shadow: 0 0 20px #ffc371; }
 }
 
 @media (max-width: 500px) {
@@ -130,7 +132,6 @@ body.dark .box.win {
     grid-template-columns: repeat(3, 70px);
     gap: 5px;
   }
-
   .box {
     width: 70px;
     height: 70px;

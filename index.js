@@ -1,10 +1,17 @@
 const boxes = document.querySelectorAll(".box");
 const gameInfo = document.querySelector(".game-info");
 const newGameBtn = document.querySelector(".btn");
+const resetBtn = document.querySelector(".reset-scores");
 const themeToggle = document.querySelector(".theme-toggle");
+const xScoreEl = document.getElementById("x-score");
+const oScoreEl = document.getElementById("o-score");
+const turnBadge = document.getElementById("turn-indicator");
+const currentPlayerEl = document.getElementById("current-player");
 
-let currentPlayer;
-let gameGrid;
+let currentPlayer, gameGrid, xWins = 0, oWins = 0;
+
+const moveSound = new Audio("assets/move.mp3");
+const winSound = new Audio("assets/win.mp3");
 
 const winningPositions = [
   [0,1,2],[3,4,5],[6,7,8],
@@ -21,14 +28,19 @@ function initGame() {
     box.classList.remove("win");
   });
   newGameBtn.classList.remove("active");
-  gameInfo.innerText = `Current Player: ${currentPlayer}`;
+  updateInfo();
 }
 
 initGame();
 
 function swapTurn() {
   currentPlayer = currentPlayer === "X" ? "O" : "X";
-  gameInfo.innerText = `Current Player: ${currentPlayer}`;
+  updateInfo();
+}
+
+function updateInfo() {
+  currentPlayerEl.textContent = currentPlayer;
+  turnBadge.textContent = currentPlayer;
 }
 
 function checkGameOver() {
@@ -50,6 +62,9 @@ function checkGameOver() {
   if (winner) {
     gameInfo.innerText = `🎉 Winner: ${winner}`;
     newGameBtn.classList.add("active");
+    updateScore(winner);
+    winSound.play();
+    confetti();
     return;
   }
 
@@ -64,10 +79,9 @@ function handleClick(index) {
     boxes[index].innerText = currentPlayer;
     gameGrid[index] = currentPlayer;
     boxes[index].style.pointerEvents = "none";
+    moveSound.play();
     checkGameOver();
-    if (!newGameBtn.classList.contains("active")) {
-      swapTurn();
-    }
+    if (!newGameBtn.classList.contains("active")) swapTurn();
   }
 }
 
@@ -80,3 +94,19 @@ newGameBtn.addEventListener("click", initGame);
 themeToggle.addEventListener("click", () => {
   document.body.classList.toggle("dark");
 });
+
+resetBtn.addEventListener("click", () => {
+  xWins = 0; oWins = 0;
+  updateScoreboard();
+});
+
+function updateScore(winner) {
+  if (winner === "X") xWins++;
+  if (winner === "O") oWins++;
+  updateScoreboard();
+}
+
+function updateScoreboard() {
+  xScoreEl.textContent = xWins;
+  oScoreEl.textContent = oWins;
+}
